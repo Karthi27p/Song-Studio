@@ -140,7 +140,16 @@
                                             <action selector="playPrevPressed:" destination="Yjh-BW-V57" eventType="touchUpInside" id="vGf-YH-SA8"/>
                                         </connections>
                                     </button>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="roQ-db-3vS">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KCF-pW-oaW">
+                                        <rect key="frame" x="-2" y="0.0" width="418" height="3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="uqD-9Z-LSR"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="playBackSliderValueChanged:" destination="Yjh-BW-V57" eventType="valueChanged" id="13s-JK-cuc"/>
+                                        </connections>
+                                    </slider>
+                                    <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="roQ-db-3vS">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="2"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="zHp-lw-4PI"/>
@@ -159,6 +168,8 @@
                                 <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="6Vl-3V-dQY" firstAttribute="leading" secondItem="bqa-N1-PTX" secondAttribute="trailing" constant="80" id="1h6-bV-LNB"/>
+                                    <constraint firstAttribute="trailing" secondItem="KCF-pW-oaW" secondAttribute="trailing" id="71V-WI-6PO"/>
+                                    <constraint firstItem="KCF-pW-oaW" firstAttribute="leading" secondItem="6dv-2r-krJ" secondAttribute="leading" id="Jg2-40-TkM"/>
                                     <constraint firstItem="6Vl-3V-dQY" firstAttribute="centerX" secondItem="6dv-2r-krJ" secondAttribute="centerX" id="R8Q-wc-wXw"/>
                                     <constraint firstAttribute="height" constant="80" id="SlS-dg-lsL"/>
                                     <constraint firstItem="roQ-db-3vS" firstAttribute="top" secondItem="6dv-2r-krJ" secondAttribute="top" id="dpz-Mv-I0s"/>
@@ -166,6 +177,7 @@
                                     <constraint firstItem="roQ-db-3vS" firstAttribute="leading" secondItem="6dv-2r-krJ" secondAttribute="leading" id="hFm-ME-kJR"/>
                                     <constraint firstItem="OcL-5z-H00" firstAttribute="leading" secondItem="6Vl-3V-dQY" secondAttribute="trailing" constant="80" id="ibD-fM-6qH"/>
                                     <constraint firstItem="W5A-4l-eUz" firstAttribute="top" secondItem="roQ-db-3vS" secondAttribute="bottom" constant="10" id="kyc-WH-Wzs"/>
+                                    <constraint firstItem="KCF-pW-oaW" firstAttribute="top" secondItem="6dv-2r-krJ" secondAttribute="top" id="mxo-W4-2Ek"/>
                                     <constraint firstItem="W5A-4l-eUz" firstAttribute="leading" secondItem="6dv-2r-krJ" secondAttribute="leading" constant="5" id="oyd-lR-vJG"/>
                                     <constraint firstItem="6Vl-3V-dQY" firstAttribute="centerY" secondItem="6dv-2r-krJ" secondAttribute="centerY" id="sub-Qq-ima"/>
                                     <constraint firstItem="roQ-db-3vS" firstAttribute="centerX" secondItem="6Vl-3V-dQY" secondAttribute="centerX" id="uCu-FV-1Wq"/>
@@ -212,6 +224,7 @@
                         <outlet property="backgroundImageView" destination="m31-hP-9YK" id="L5a-Y0-2DG"/>
                         <outlet property="playButton" destination="6Vl-3V-dQY" id="Ew9-fh-jvK"/>
                         <outlet property="progressView" destination="roQ-db-3vS" id="IBl-iD-Hyg"/>
+                        <outlet property="slider" destination="KCF-pW-oaW" id="sSR-dw-TPE"/>
                         <outlet property="songTitle" destination="Agn-WM-9SN" id="3Kp-VV-nga"/>
                         <outlet property="trackTime" destination="W5A-4l-eUz" id="9Lx-Ko-7Bo"/>
                     </connections>

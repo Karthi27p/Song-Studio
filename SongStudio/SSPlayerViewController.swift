@@ -18,6 +18,7 @@ class SSPlayerViewController: UIViewController {
     @IBOutlet weak var trackTime: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     
+    @IBOutlet weak var slider: UISlider!
     var mp3Player:MP3Player?
     var timer:Timer?
     var selected = false
@@ -31,14 +32,17 @@ class SSPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let tracks = getTracks(songs: songList!)
+        let session = AVAudioSession.sharedInstance()
+        try! session.setCategory(AVAudioSession.Category.playback)
         mp3Player = MP3Player(trackName: tracks, currentIndex: selectedIndex!)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         //setupNotificationCenter()
         setTrackName()
         updateViews()
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         mp3Player = nil
     }
     
@@ -73,6 +77,12 @@ class SSPlayerViewController: UIViewController {
         }
     }
     
+    @IBAction func playBackSliderValueChanged(_ sender: UISlider) {
+
+        let time: Float = sender.value * Float((mp3Player?.player!.duration)!)
+        mp3Player?.player?.currentTime = TimeInterval(time)
+
+    }
     
     @IBAction func playNextPressed(_ sender: Any) {
         SSPlayerViewController.currentTrackIndex += 1
@@ -114,6 +124,7 @@ class SSPlayerViewController: UIViewController {
         trackTime.text = mp3Player?.getCurrentTimeAsString()
         if let progress = mp3Player?.getProgress() {
             progressView.progress = progress
+            slider.value = progress
         }
     }
     
